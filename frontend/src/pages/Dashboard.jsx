@@ -34,14 +34,14 @@ export default function Dashboard() {
     setProjects((prev) => prev.filter((p) => p.projectId !== projectId))
   }
 
-  const filtered = projects.filter((p) => {
+  const filtered = Array.isArray(projects) ? projects.filter((p) => {
     if (filterScore === 'ALL') return true
     if (filterScore === 'HIGH' ) return (p.latestScore ?? 0) >= 80
     if (filterScore === 'MEDIUM') return (p.latestScore ?? 0) >= 50 && (p.latestScore ?? 0) < 80
     if (filterScore === 'LOW') return (p.latestScore ?? 0) < 50
     return true
   })
-
+      : [];
   return (
     <div className="max-w-3xl mx-auto mt-8 px-4">
       <div className="flex items-center justify-between mb-6">
