@@ -145,8 +145,8 @@ public class ReviewOrchestrationService {
                 .findings(findingDTOs)
                 .build();
 
-        userRepository.findById(userId).ifPresent(user ->
-                emailService.sendReviewCompleteEmail(user, responseDTO));
+         /* userRepository.findById(userId).ifPresent(user ->
+                emailService.sendReviewCompleteEmail(user, responseDTO)); */
 
         return responseDTO;
     }
