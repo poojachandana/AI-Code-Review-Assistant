@@ -83,7 +83,6 @@ public class ReviewOrchestrationService {
                 .teamId(teamId)
                 .build();
         project = projectRepository.save(project);
-        log.info("PROJECT SAVED: {}", project.getId());
 
         // Persist Review
         Review review = Review.builder()
@@ -98,7 +97,6 @@ public class ReviewOrchestrationService {
                 .maintainabilityIndex(complexity.getMaintainabilityIndex())
                 .build();
         review = reviewRepository.save(review);
-        log.info("REVIEW SAVED: {}", review.getId());
 
         // Persist Findings
         List<ReviewFindingDTO> findingDTOs = new ArrayList<>();
@@ -150,7 +148,6 @@ public class ReviewOrchestrationService {
         userRepository.findById(userId).ifPresent(user ->
                 emailService.sendReviewCompleteEmail(user, responseDTO));
 
-        log.info("RETURNING DTO: {}", responseDTO.getReviewId());
         return responseDTO;
     }
 
