@@ -44,7 +44,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneral(Exception ex) {
-        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred: " + ex.getMessage());
+        ex.printStackTrace();   // This prints the full stack trace in Render logs
+
+        return buildResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR,
+                ex.getClass().getName() + ": " + ex.getMessage()
+        );
     }
 
     private ResponseEntity<Object> buildResponse(HttpStatus status, String message) {
