@@ -5,7 +5,7 @@ const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem('user')
+    const saved = sessionStorage.getItem('user')
     return saved ? JSON.parse(saved) : null
   })
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
@@ -28,15 +28,15 @@ export function AuthProvider({ children }) {
   }
 
   const persistSession = (data) => {
-    localStorage.setItem('token', data.token)
+    sessionStorage.setItem('token', data.token)
     const userData = { userId: data.userId, name: data.name, email: data.email, role: data.role }
-    localStorage.setItem('user', JSON.stringify(userData))
+    sessionStorage.setItem('user', JSON.stringify(userData))
     setUser(userData)
   }
 
   const logout = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
+    sessionStorage.removeItem('token')
+    sessionStorage.removeItem('user')
     setUser(null)
   }
 

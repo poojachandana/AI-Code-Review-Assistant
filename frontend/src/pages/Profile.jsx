@@ -18,8 +18,8 @@ export default function Profile() {
     try {
       await updateProfile({ name, currentPassword, newPassword, emailNotifications })
       setMessage('Profile updated successfully')
-      const stored = JSON.parse(localStorage.getItem('user'))
-      localStorage.setItem('user', JSON.stringify({ ...stored, name }))
+      const stored = JSON.parse(sessionStorage.getItem('user'))
+      sessionStorage.setItem('user', JSON.stringify({ ...stored, name }))
     } catch (err) {
       setError(err.response?.data?.message || 'Update failed')
     }
