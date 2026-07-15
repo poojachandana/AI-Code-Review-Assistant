@@ -30,13 +30,13 @@ public class ReviewFinding {
     @Column(nullable = false, length = 40)
     private String source; // CHECKSTYLE, PMD, SPOTBUGS, AI
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String issue;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String explanation;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String suggestion;
 
     @Column(name = "file_name")

@@ -26,8 +26,7 @@ public class Review {
     @Column(name = "review_score")
     private Integer reviewScore; // Code Quality Score 0-100
 
-    @Lob
-    @Column(name = "summary")
+    @Column(name = "summary", columnDefinition = "TEXT")
     private String summary;
 
     // Complexity metrics
