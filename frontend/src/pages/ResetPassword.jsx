@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { resetPassword } from '../services/api.js'
+import PasswordInput from '../components/PasswordInput.jsx'
 
 export default function ResetPassword() {
   const [email, setEmail] = useState('')
@@ -34,8 +35,12 @@ export default function ResetPassword() {
         </div>
         <div>
           <label className="block text-sm text-gray-600 dark:text-gray-300 mb-1">New Password</label>
-          <input type="password" required minLength={6} value={newPassword} onChange={(e) => setNewPassword(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+          <PasswordInput
+              required
+              minLength={6}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+          />
         </div>
         <button className="w-full bg-brand-600 hover:bg-brand-700 text-white py-2 rounded-md font-medium">
           Reset Password

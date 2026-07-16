@@ -32,8 +32,12 @@ export default function Register() {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm text-gray-600 dark:text-gray-300 mb-1">Name</label>
-          <input required value={name} onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+          <input
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value.replace(/[^a-zA-Z\s]/g, ''))}
+              className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
+          />
         </div>
         <div>
           <label className="block text-sm text-gray-600 dark:text-gray-300 mb-1">Email</label>
@@ -42,8 +46,12 @@ export default function Register() {
         </div>
         <div>
           <label className="block text-sm text-gray-600 dark:text-gray-300 mb-1">Password (min 6 chars)</label>
-          <input type="password" required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+          <PasswordInput
+              required
+              minLength={6}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <button disabled={loading} className="w-full bg-brand-600 hover:bg-brand-700 text-white py-2 rounded-md font-medium">
           {loading ? 'Creating account...' : 'Register'}
