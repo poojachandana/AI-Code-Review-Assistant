@@ -7,7 +7,6 @@ export default function Profile() {
   const [name, setName] = useState(user?.name || '')
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
-  const [emailNotifications, setEmailNotifications] = useState(true)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
 
@@ -16,7 +15,7 @@ export default function Profile() {
     setError('')
     setMessage('')
     try {
-      await updateProfile({ name, currentPassword, newPassword, emailNotifications })
+      await updateProfile({ name, currentPassword, newPassword })
       setMessage('Profile updated successfully')
       const stored = JSON.parse(sessionStorage.getItem('user'))
       sessionStorage.setItem('user', JSON.stringify({ ...stored, name }))
@@ -37,11 +36,7 @@ export default function Profile() {
           <input value={name} onChange={(e) => setName(e.target.value)}
             className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
         </div>
-        <hr className="border-gray-200 dark:border-gray-700" />
-        <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-          <input type="checkbox" checked={emailNotifications} onChange={(e) => setEmailNotifications(e.target.checked)} />
-          Email me when a review completes
-        </label>
+
         <hr className="border-gray-200 dark:border-gray-700" />
         <p className="text-sm text-gray-500">Change password (optional)</p>
         <div>

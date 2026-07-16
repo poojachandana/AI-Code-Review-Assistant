@@ -9,7 +9,6 @@ import com.aicode.review.repository.TeamMemberRepository;
 import com.aicode.review.repository.TeamRepository;
 import com.aicode.review.repository.UserRepository;
 import com.aicode.review.security.JwtUtil;
-import com.aicode.review.service.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,7 @@ public class TeamController {
     private final TeamMemberRepository teamMemberRepository;
     private final UserRepository userRepository;
     private final JwtUtil jwtUtil;
-    private final EmailService emailService;
+
 
     @PostMapping
     public ResponseEntity<Team> createTeam(@RequestHeader("Authorization") String authHeader,
@@ -78,7 +77,7 @@ public class TeamController {
 
         Team team = teamRepository.findById(teamId).orElseThrow(() -> new ResourceNotFoundException("Team not found"));
         User owner = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        emailService.sendTeamInviteEmail(invitee.getEmail(), team.getName(), owner.getName());
+    
 
         return ResponseEntity.ok(Map.of("message", "Member added"));
     }

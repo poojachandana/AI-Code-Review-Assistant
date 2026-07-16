@@ -34,8 +34,7 @@ public class ReviewOrchestrationService {
     private final ProjectRepository projectRepository;
     private final ReviewRepository reviewRepository;
     private final ReviewFindingRepository reviewFindingRepository;
-    private final UserRepository userRepository;
-    private final EmailService emailService;
+    private final UserRepository userRepository;;
 
     @Transactional
     public ReviewResponseDTO reviewUploadedFile(MultipartFile file, Long userId, String uploadType, Long teamId) throws Exception {
@@ -145,8 +144,7 @@ public class ReviewOrchestrationService {
                 .findings(findingDTOs)
                 .build();
 
-        userRepository.findById(userId).ifPresent(user ->
-                emailService.sendReviewCompleteEmail(user, responseDTO));
+   
 
         return responseDTO;
     }
