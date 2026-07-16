@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Trash2 } from 'lucide-react'
 import ScoreGauge from './ScoreGauge.jsx'
+import { formatDate } from '../utils/formatDate.js'
 
 export default function ReviewCard({ project, onDelete }) {
     return (
@@ -15,7 +16,7 @@ export default function ReviewCard({ project, onDelete }) {
                 <div>
                     <p className="font-semibold text-gray-900 dark:text-gray-100">{project.projectName}</p>
                     <p className="text-xs text-gray-400">
-                        {project.uploadType} · {new Date(project.createdAt).toLocaleString()}
+                        {project.uploadType} · {formatDate(project.createdAt)}
                     </p>
                 </div>
             </div>

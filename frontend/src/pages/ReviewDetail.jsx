@@ -5,6 +5,7 @@ import FindingItem from '../components/FindingItem.jsx'
 import RefactorPanel from '../components/RefactorPanel.jsx'
 import ScoreGauge from '../components/ScoreGauge.jsx'
 import { MetricsBarChart, SeverityDistributionChart } from '../components/ComplexityChart.jsx'
+import { formatDate } from '../utils/formatDate.js'
 
 
 const FILTERS = ['ALL', 'CRITICAL', 'HIGH', 'MEDIUM', 'LOW', 'INFO']
@@ -55,7 +56,7 @@ export default function ReviewDetail() {
       <div className="flex items-start justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{review.projectName}</h1>
-          <p className="text-sm text-gray-400">{new Date(review.createdAt).toLocaleString()}</p>
+          <p className="text-sm text-gray-400">{formatDate(review.createdAt)}</p>
         </div>
         <ScoreGauge score={review.reviewScore} size={110} />
       </div>
