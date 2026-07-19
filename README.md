@@ -210,25 +210,3 @@ public class Main {
 ### 5. Review dashboard
 ![Dashboard](screenshots/05-dashboard.png)
 
-*(Add your own screenshots to `docs/screenshots/` with these filenames, or update the paths above to match your files.)*
-
----
-
-## 8. Known Limitations
-
-- **SpotBugs** performs bytecode analysis, which isn't possible on raw uploaded
-  source without a compile step. A JavaParser-based heuristic detector
-  (`BugPatternAnalyzer`) substitutes common SpotBugs-style checks directly on
-  source instead.
-- **Free-tier hosting**: both the backend and frontend spin down after ~15
-  minutes of inactivity on Render's free tier; the first request afterward can
-  take 10–50 seconds to respond.
-- **Email notifications** were removed — Render's free tier blocks outbound
-  SMTP (port 587), so this feature could not be made reliable without a paid
-  tier or a switch to an HTTP-based email API (e.g., Resend, SendGrid).
-
----
-
-## 9. License
-
-Add your license here (e.g., MIT).
