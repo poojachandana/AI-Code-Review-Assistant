@@ -8,7 +8,7 @@ review — then displays a quality score, detailed findings, and exportable
 reports.
 
 **Live demo:** https://aicodereview-frontend-f6ug.onrender.com
-**Backend API:** https://aicodereview-backend-adu2.onrender.com
+
 
 ---
 
