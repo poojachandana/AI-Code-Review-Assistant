@@ -56,8 +56,10 @@ export const getDocumentation = (projectId) => api.get(`/reviews/project/${proje
 export const getApiDocs = (projectId) => api.get(`/reviews/project/${projectId}/api-docs`)
 export const getReadmeSummary = (projectId) => api.get(`/reviews/project/${projectId}/readme-summary`)
 
-export const exportReportUrl = (reviewId, format) => `/api/reviews/${reviewId}/export/${format}`
+const API_BASE = import.meta.env.VITE_API_URL || "/api";
 
+export const exportReportUrl = (reviewId, format) =>
+    `${API_BASE}/reviews/${reviewId}/export/${format}`;
 // ---- Teams (Team Workspaces) ----
 export const createTeam = (name) => api.post('/teams', { name })
 export const listMyTeams = () => api.get('/teams')
