@@ -169,44 +169,6 @@ See `render.yaml` at the repo root for the full resource definitions.
 
 ---
 
-## 6. Documentation
 
-- **[Database Schema](docs/DATABASE_SCHEMA.md)** — full entity-relationship reference
-- **[API Documentation](docs/API_DOCUMENTATION.md)** — every endpoint, request/response shape, and auth requirement
 
----
-
-## 7. Sample Test Case
-
-**Test input:** a Java snippet submitted via the Monaco editor, intentionally
-containing common bugs to demonstrate detection:
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        int x = 10;
-        if (x = 20) {                       // assignment instead of comparison
-            System.out.println("x is 20");
-        }
-        String name = null;
-        System.out.println(name.length());  // null pointer dereference
-        int result = divide(10, 0);          // divide by zero
-    }
-}
-```
-
-### 1. Register a new account
-![Register page](screenshots/01-register.png)
-
-### 2. Login
-![Login page](screenshots/02-login.png)
-
-### 3. Submit code for review
-![Submit code](screenshots/03-submit-code.png)
-
-### 4. Static analysis + AI review results
-![Review results](screenshots/04-review-results.png)
-
-### 5. Review dashboard
-![Dashboard](screenshots/05-dashboard.png)
 
